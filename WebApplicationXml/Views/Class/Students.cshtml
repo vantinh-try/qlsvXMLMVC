@@ -1,0 +1,222 @@
+@{
+    ViewData["Title"] = "Danh Sách Sinh Viên";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-color: #b1d0f4; /* Light background for contrast */
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #343a40; /* Dark text for contrast */
+        }
+
+        .btn {
+            margin-right: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .table {
+            margin-top: 20px;
+            background-color: white; /* Table background */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        .table th {
+            text-align: center;
+            background-color: #007bff; /* Bootstrap primary color */
+            color: white; /* White text on the header */
+        }
+
+        .table td {
+            vertical-align: middle;
+        }
+
+        #addStudentForm, #editStudentForm {
+            background-color: #ffffff; /* White background for forms */
+            padding: 20px;
+            border-radius: 5px; /* Rounded corners for forms */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        /* Hide edit form by default */
+        #editStudentForm {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Danh Sách Sinh Viên - @ViewBag.ClassName</h2>
+
+    <div class="d-flex justify-content-between" style="margin-bottom: 15px;">
+        <!-- Button to go back to class list -->
+        <a href="@Url.Action("Index", "Class")" class="btn btn-secondary">Trang Chủ</a>
+
+        <!-- Button to toggle the form for adding a new student -->
+        <button type="button" class="btn btn-primary" id="toggleFormButton">
+            Thêm Sinh Viên
+        </button>
+    </div>
+
+    <!-- Form for Adding Student (Initially Hidden) -->
+    <div id="addStudentForm" style="display:none; margin-top: 15px;">
+        <form method="post" action="@Url.Action("AddStudent", "Class")">
+            <input type="hidden" name="className" value="@ViewBag.ClassName" />
+            <div class="form-group">
+                <label for="Id">Mã SV:</label>
+                <input type="text" class="form-control" name="Id" required oninput="this.value = this.value.toUpperCase();" />
+            </div>
+            <div class="form-group">
+                <label for="FullName">Họ Tên:</label>
+                <input type="text" class="form-control" name="FullName" required />
+            </div>
+            <div class="form-group">
+                <label for="BirthYear">Năm Sinh:</label>
+                <input type="number" class="form-control" name="BirthYear" required />
+            </div>
+            <div class="form-group">
+                <label for="Gender">Giới Tính:</label>
+                <select class="form-control" name="Gender">
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Phone">SĐT:</label>
+                <input type="text" class="form-control" name="Phone" required />
+            </div>
+            <div class="form-group">
+                <label for="Address">Địa Chỉ:</label>
+                <input type="text" class="form-control" name="Address" required />
+            </div>
+            <button type="submit" class="btn btn-success">Thêm Sinh Viên</button>
+            <button type="button" class="btn btn-secondary" id="cancelAddButton">Hủy</button>
+        </form>
+    </div>
+
+    <!-- Bảng Danh Sách Sinh Viên -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Mã SV</th>
+                <th>Họ Tên</th>
+                <th>Năm Sinh</th>
+                <th>Giới Tính</th>
+                <th>SĐT</th>
+                <th>Địa Chỉ</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int stt = 1;    
+            }
+            @foreach (var student in Model)
+            {
+                
+                <tr>
+                    <td>@stt</td>
+                    <td>@student.Id</td>
+                    <td>@student.FullName</td>
+                    <td>@student.BirthYear</td>
+                    <td>@student.Gender</td>
+                    <td>@student.Phone</td>
+                    <td>@student.Address</td>
+                    <td>
+                        <button type="button" class="btn btn-warning" onclick="openEditForm('@student.Id', '@student.FullName', @student.BirthYear, '@student.Gender', '@student.Phone', '@student.Address')">Chỉnh Sửa</button>
+                        <form method="post" action="@Url.Action("DeleteStudent", "Class")" style="display:inline;">
+                            <input type="hidden" name="id" value="@student.Id" />
+                            <input type="hidden" name="className" value="@ViewBag.ClassName" />
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xoá sinh viên này không?');">Xoá</button>
+                        </form>
+                    </td>
+                </tr>
+                stt++;
+            }
+        </tbody>
+    </table>
+
+    <!-- Form for Editing Student (Initially Hidden) -->
+    <div id="editStudentForm" style="margin-top: 15px;">
+        <form method="post" action="@Url.Action("EditStudent", "Class")">
+            <input type="hidden" name="id" id="editStudentId" />
+            <input type="hidden" name="className" value="@ViewBag.ClassName" />
+            <div class="form-group">
+                <label for="FullName">Họ Tên:</label>
+                <input type="text" class="form-control" name="fullName" id="editFullName" required />
+            </div>
+            <div class="form-group">
+                <label for="BirthYear">Năm Sinh:</label>
+                <input type="number" class="form-control" name="birthYear" id="editBirthYear" required />
+            </div>
+            <div class="form-group">
+                <label for="Gender">Giới Tính:</label>
+                <select class="form-control" name="gender" id="editGender">
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Phone">SĐT:</label>
+                <input type="text" class="form-control" name="phone" id="editPhone" required />
+            </div>
+            <div class="form-group">
+                <label for="Address">Địa Chỉ:</label>
+                <input type="text" class="form-control" name="address" id="editAddress" required />
+            </div>
+            <button type="submit" class="btn btn-success">Cập Nhật</button>
+            <button type="button" class="btn btn-secondary" id="cancelEditButton">Hủy</button>
+        </form>
+    </div>
+</div>
+
+<!-- JavaScript to handle the toggle for adding and editing student forms -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script>
+    
+    var i = 0;
+    document.getElementById('toggleFormButton').onclick = function () {
+        var form = document.getElementById('addStudentForm');
+        form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    };
+
+    document.getElementById('cancelAddButton').onclick = function () {
+        document.getElementById('addStudentForm').style.display = 'none';
+    };
+
+    function openEditForm(id, fullName, birthYear, gender, phone, address) {
+        document.getElementById('editStudentId').value = id;
+        document.getElementById('editFullName').value = fullName;
+        document.getElementById('editBirthYear').value = birthYear;
+        document.getElementById('editGender').value = gender;
+        document.getElementById('editPhone').value = phone;
+        document.getElementById('editAddress').value = address;
+
+        document.getElementById('editStudentForm').style.display = 'block';
+    }
+
+    document.getElementById('cancelEditButton').onclick = function () {
+        document.getElementById('editStudentForm').style.display = 'none';
+    };
+</script>
+</body>
+</html>

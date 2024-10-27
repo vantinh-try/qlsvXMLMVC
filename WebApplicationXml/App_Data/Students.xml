@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Students>
+  <Student>
+    <Id>SV03</Id>
+    <FullName>Nguyễn Văn C</FullName>
+    <BirthYear>2000</BirthYear>
+    <Gender>Nam</Gender>
+    <Phone>0123456788</Phone>
+    <Address>Đà Nẵng</Address>
+    <ClassName>DCT22</ClassName>
+  </Student>
+  <Student>
+    <Id>21D480201023</Id>
+    <FullName>Nguyễn Văn Tịnh</FullName>
+    <BirthYear>2002</BirthYear>
+    <Gender>Nam</Gender>
+    <Phone>0329097923</Phone>
+    <Address>Tịnh Ấn Đông</Address>
+    <ClassName>DCT21</ClassName>
+  </Student>
+  <Student>
+    <Id>23D480201001</Id>
+    <FullName>Trần Đình Nam</FullName>
+    <BirthYear>2004</BirthYear>
+    <Gender>Nam</Gender>
+    <Phone>0333222811</Phone>
+    <Address>Viet Nam</Address>
+    <ClassName>DCT23</ClassName>
+  </Student>
+  <Student>
+    <Id>21D480201031</Id>
+    <FullName>Nguyễn Văn Thanh Tiền</FullName>
+    <BirthYear>2002</BirthYear>
+    <Gender>Nam</Gender>
+    <Phone>0398797268</Phone>
+    <Address>quang ngai</Address>
+    <ClassName>DCT21</ClassName>
+  </Student>
+  <Student>
+    <Id>21D480201003</Id>
+    <FullName>Dương Văn Duy</FullName>
+    <BirthYear>2003</BirthYear>
+    <Gender>Nam</Gender>
+    <Phone>0792130926</Phone>
+    <Address>Huế</Address>
+    <ClassName>DCT21</ClassName>
+  </Student>
+  <Student>
+    <Id>21D480201004</Id>
+    <FullName>Nguyễn Văn Duy</FullName>
+    <BirthYear>2003</BirthYear>
+    <Gender>Nam</Gender>
+    <Phone>0333222111</Phone>
+    <Address>Đà Nẵng</Address>
+    <ClassName>DCT21</ClassName>
+  </Student>
+  <Student>
+    <Id>21D480201002</Id>
+    <FullName>Đỗ Minh Chiến</FullName>
+    <BirthYear>2003</BirthYear>
+    <Gender>Nam</Gender>
+    <Phone>0123456789</Phone>
+    <Address>Nha Trang</Address>
+    <ClassName>DCT21</ClassName>
+  </Student>
+  <Student>
+    <Id>21D480201006</Id>
+    <FullName>Cao Xuân Hiếu</FullName>
+    <BirthYear>2003</BirthYear>
+    <Gender>Nam</Gender>
+    <Phone>03812477542</Phone>
+    <Address>Khánh Hoà</Address>
+    <ClassName>DCT21</ClassName>
+  </Student>
+  <Student>
+    <Id>21D480201009</Id>
+    <FullName>Phan Tài Huy</FullName>
+    <BirthYear>2003</BirthYear>
+    <Gender>Nam</Gender>
+    <Phone>0237571273</Phone>
+    <Address>Đảo Ngọc</Address>
+    <ClassName>DCT21</ClassName>
+  </Student>
+  <Student>
+    <Id>21D480201017</Id>
+    <FullName>Ngô Văn Phước</FullName>
+    <BirthYear>2002</BirthYear>
+    <Gender>Nam</Gender>
+    <Phone>0546893242</Phone>
+    <Address>Ba Tơ</Address>
+    <ClassName>DCT21</ClassName>
+  </Student>
+  <Student>
+    <Id>21D480201012</Id>
+    <FullName>Trần Nhật Lông</FullName>
+    <BirthYear>2003</BirthYear>
+    <Gender>Nam</Gender>
+    <Phone>03247372922</Phone>
+    <Address>Đắc lăk</Address>
+    <ClassName>DCT21</ClassName>
+  </Student>
+  <Student>
+    <Id>21D480201029</Id>
+    <FullName>Huỳnh Tấn Vĩnh</FullName>
+    <BirthYear>2003</BirthYear>
+    <Gender>Nữ</Gender>
+    <Phone>08582478523</Phone>
+    <Address>Thác Trắng</Address>
+    <ClassName>DCT21</ClassName>
+  </Student>
+  <Student>
+    <Id>21D480201019</Id>
+    <FullName>Đinh Thị Hoài Sâm</FullName>
+    <BirthYear>2003</BirthYear>
+    <Gender>Nam</Gender>
+    <Phone>05832478722</Phone>
+    <Address>Mỹ Khê(nhà bán ốc)</Address>
+    <ClassName>DCT21</ClassName>
+  </Student>
+  <Student>
+    <Id>21D480201024</Id>
+    <FullName>Lê Đoàn Xuân Trường</FullName>
+    <BirthYear>2003</BirthYear>
+    <Gender>Nam</Gender>
+    <Phone>0342894924</Phone>
+    <Address>Hà Nội</Address>
+    <ClassName>DCT21</ClassName>
+  </Student>
+  <Student>
+    <Id>21D480201008</Id>
+    <FullName>Nguyễn Tấn Hoà</FullName>
+    <BirthYear>2003</BirthYear>
+    <Gender>Nữ</Gender>
+    <Phone>0457234922</Phone>
+    <Address>Nghĩa Hành</Address>
+    <ClassName>DCT21</ClassName>
+  </Student>
+  <Student>
+    <Id>21D480201005</Id>
+    <FullName>Trần Trung Hậu</FullName>
+    <BirthYear>1999</BirthYear>
+    <Gender>Nam</Gender>
+    <Phone>0453377334</Phone>
+    <Address>JollyBee</Address>
+    <ClassName>DCT21</ClassName>
+  </Student>
+  <Student>
+    <Id>21D480201018</Id>
+    <FullName>Võ Hữu Quang</FullName>
+    <BirthYear>2003</BirthYear>
+    <Gender>Nam</Gender>
+    <Phone>0934712332</Phone>
+    <Address>Mũi Cà </Address>
+    <ClassName>DCT21</ClassName>
+  </Student>
+  <Student>
+    <Id>22D480201003</Id>
+    <FullName>Huỳnh Tấn Vĩnh</FullName>
+    <BirthYear>2004</BirthYear>
+    <Gender>Nam</Gender>
+    <Phone>03298881123</Phone>
+    <Address>Tịnh Hà</Address>
+    <ClassName>DCT22</ClassName>
+  </Student>
+</Students>

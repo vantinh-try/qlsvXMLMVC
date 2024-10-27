@@ -1,0 +1,102 @@
+@{
+    ViewData["Title"] = "Danh sách Lớp";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-color: #b1d0f4; /* Light background for contrast */
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 40;
+            color: #343a40; /* Dark text for contrast */
+        }
+
+        .add-class-form {
+            background: white; /* White background for form */
+            padding: 20px; /* Padding for form */
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            margin-bottom: 20px; /* Space below the form */
+        }
+
+        .class-list {
+            list-style-type: none; /* Remove bullets from list */
+            padding: 0; /* Remove padding */
+        }
+
+        .class-list li {
+            background: white; /* White background for class items */
+            margin-bottom: 10px; /* Space between items */
+            padding: 15px; /* Padding for items */
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            display: flex; /* Flex layout for horizontal alignment */
+            justify-content: space-between; /* Space between elements */
+            align-items: center; /* Center items vertically */
+        }
+
+        .class-list a {
+            text-decoration: none; /* Remove underline */
+            color: #007bff; /* Bootstrap primary color */
+        }
+
+        .class-list a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        .delete-link {
+            color: red; /* Red color for delete link */
+        }
+
+        .error-message {
+            color: red; /* Red color for error message */
+            margin-top: 10px; /* Space above error message */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Danh sách Lớp</h2>
+
+    <div class="add-class-form">
+        <h3>Thêm Lớp Mới</h3>
+        <form method="post" action="/Class/AddClass">
+            <div class="form-group">
+                <input type="text" class="form-control" name="className" placeholder="Nhập tên lớp" required oninput="this.value = this.value.toUpperCase();" />
+            </div>
+            <button type="submit" class="btn btn-primary">Thêm</button>
+        </form>
+    </div>
+
+    <ul class="class-list">
+        @foreach (var cls in ViewBag.Classes as List<string>)
+        {
+            <li>
+                <a href="/Class/Students?className=@cls">@cls</a>
+                <a href="/Class/DeleteClass?className=@cls" class="delete-link" onclick="return confirm('Bạn có chắc chắn muốn xoá lớp này không?');">Xoá</a>
+            </li>
+        }
+    </ul>
+
+    @if (ViewBag.Message != null)
+    {
+        <p class="error-message">@ViewBag.Message</p>
+    }
+</div>
+
+</body>
+</html>
